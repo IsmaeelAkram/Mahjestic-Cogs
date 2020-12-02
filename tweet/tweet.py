@@ -2,6 +2,7 @@ from redbot.core import commands
 from redbot.core.bot import Config, Red
 import discord
 import tweepy
+from tweepy.error import TweepError
 import logging
 import asyncio
 
@@ -62,4 +63,14 @@ class Tweet(commands.Cog):
                 await message.channel.send("You need to set your Twitter API Credentials with `[p]set_twitter_credentials`.")
                 return
             self.logger.info(f'Tweeted "{message.content}"')
-            await self.tweet(message)
+            try:
+                await self.tweet(message)
+            except TweepError as e:
+                if e.api_code == 89:
+                    await message.add_reaction("❌")
+                    await message.channel.send("Your Twitter API credentials are invalid.")
+                    return
+                else:
+                    await message.add_reaction("❌")
+                    await message.channel.send("An error has occurred. Run traceback to find the error.")
+                    return
