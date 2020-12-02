@@ -7,5 +7,5 @@ class Modmail(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, ctx: Commands.Context):
-        if isinstance(ctx.channel, discord.channel.DMChannel):
+        if not ctx.message.guild:
             await ctx.channel.send("ModMail is coming soon to this bot.")
