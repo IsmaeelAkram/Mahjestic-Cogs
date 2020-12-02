@@ -28,7 +28,7 @@ class AmongUsLobby(commands.Cog):
     async def send_code(self, code: discord.Message, after: discord.VoiceState, guild: discord.Guild):
         embed = discord.Embed(
             title=f"Code: {code.content}",
-            description=f"{code.author.name} started an Among Us game!\n\nJoin **{after.channel.name}** to play!"
+            description=f"{code.author.mention} started an Among Us game!\n\nJoin **{after.channel.name}** to play!"
             ).set_thumbnail(url="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4b1ceee5-9458-4434-80bc-fc5d83a2ea88/de5dkfo-361fa49d-4f48-432b-a55d-c9dad5fc5055.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNGIxY2VlZTUtOTQ1OC00NDM0LTgwYmMtZmM1ZDgzYTJlYTg4XC9kZTVka2ZvLTM2MWZhNDlkLTRmNDgtNDMyYi1hNTVkLWM5ZGFkNWZjNTA1NS5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.KPxCEBilI2yzC4kbrECS07aXWy4SGKXTrJ9DjMBgu8E")
         
         channel_id = await self.config.guild(guild).code_channel()
