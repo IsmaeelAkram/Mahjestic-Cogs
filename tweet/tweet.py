@@ -19,7 +19,6 @@ class Tweet(commands.Cog):
         auth.set_access_token(access_token, access_secret)
         api = tweepy.API(auth)
         api.update_status(message.content)
-        await message.add_reaction('✅')
 
     @commands.command()
     @checks.admin_or_permissions(manage_channels=True)
