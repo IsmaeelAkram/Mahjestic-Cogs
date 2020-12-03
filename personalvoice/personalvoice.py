@@ -52,7 +52,7 @@ class PersonalVoice(commands.Cog):
         category = await self.config.guild(member.guild).voice_category()
         channel = await self.config.guild(member.guild).voice_channel()
         
-        if before.channel != None:
+        if before.channel != None and not after.channel:
             if before.channel.name == f"{member.name}'s Channel":
                 await before.channel.delete()
         
