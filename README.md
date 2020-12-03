@@ -15,3 +15,7 @@ Tweets any message sent in a specific channel.
 ModMail cog for Red bot. As far as I know, there is no proper ModMail cog that works like a regular ModMail bot.
 
 User DMs bot and new thread is opened (new channel is created in server). Admins can talk through the channel and the bot sends messages back to the user.
+
+## Personal Voice **(Done)**
+
+Gives people their own voice channels to talk in. To make one, all you have to do is join a certain channel!
