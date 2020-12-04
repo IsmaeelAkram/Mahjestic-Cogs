@@ -52,14 +52,13 @@ class PersonalVoice(commands.Cog):
         category = await self.config.guild(member.guild).voice_category()
         channel = await self.config.guild(member.guild).voice_channel()
         
-        if before.channel != None:
-            if before.channel.name == f"{member.name}'s Channel":
-                await before.channel.delete()
-        
-        if after.channel != None:
+        if not after.channel:
+            if before.channel != None:
+                if before.channel.name == f"{member.name}'s Channel":
+                    await before.channel.delete()
+        else:
             if after.channel.id == channel:
-                    category = discord.utils.get(member.guild.categories, id=category)
-                    new_vc = await member.guild.create_voice_channel(f"{member.name}'s Channel", category=category)
-
-                    await member.move_to(new_vc)
+                category = discord.utils.get(member.guild.categories, id=category)
+                new_vc = await member.guild.create_voice_channel(f"{member.name}'s Channel", category=category)
+                await member.move_to(new_vc)
             
